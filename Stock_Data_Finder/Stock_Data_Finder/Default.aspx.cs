@@ -35,7 +35,17 @@ namespace Stock_Data_Finder
                 Models.StockList stocks = Models.YahooFinance.Parse(csvData, Symbol, startDate, endDate);
                 //return stocks;
 
-
+                foreach (Models.StockInfo a in stocks.dataList)
+                {
+                    TableRow tRow = new TableRow();
+                    symbolData.Rows.Add(tRow);
+                    TableCell tCell1 = new TableCell();
+                    TableCell tCell2 = new TableCell();
+                    tCell1.Text = a.date.ToString();
+                    tRow.Cells.Add(tCell1);
+                    tCell2.Text = a.price.ToString();
+                    tRow.Cells.Add(tCell2);
+                }
             }
 
         }

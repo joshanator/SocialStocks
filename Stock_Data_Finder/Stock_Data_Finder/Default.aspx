@@ -8,23 +8,13 @@
     <asp:Button runat="server" Text="Submit" onclick="submitUserInput" ID="SubmitButton"  />
     </br></br>
 
-    @model List<Stock_Data_Finder.Models.StockInfo>
-        <table>
-            <tr>
-                <th>---------SYMBOL-----------------------</th>
-                <th>---------AVG VOLUME-------------------</th>
-                <th>---------LAST TRADE PRICE-------------</th>
-        
-            </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Symbol)</td>
-                <td>@Html.DisplayFor(modelItem => item.AverageVolume)</td>
-                <td>@Html.DisplayFor(modelItem => item.LastTradePrice)</td>
-            </tr>
-        }
-    </table>
+
+    <asp:Table ID="symbolData" runat="server">
+        <asp:TableHeaderRow runat="server" >
+                <asp:TableHeaderCell>Date</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Closing Price</asp:TableHeaderCell>
+            </asp:TableHeaderRow>
+    </asp:Table>
            
 
 
