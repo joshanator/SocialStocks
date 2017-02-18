@@ -35,6 +35,7 @@ namespace Social_Stocks_Instrument_.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult Submit(string symbol, string startDate, string endDate)
         {
 

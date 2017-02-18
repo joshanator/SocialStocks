@@ -1,26 +1,13 @@
 ﻿@model List < Social_Stocks_Instrument_.Models.StockInfo>
 
-<%using (Html.BeginForm("Submit", "HomeController"))
-{%>
-<table>
-    <tr>
-        <td>
-            <input type="text" id="symbol" name="symbol" />
-        </td>
-        <td>
-            <input type="text" id="startDate" name="startDate" />
-        </td>
-        <td>
-            <input type="text" id="endDate" name="endDate" />
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">
-            <input type="submit" value="Submit" class="submit_button" />
-        </td>
-    </tr>
-</table>
-<%}%>
+
+
+<form action="~/Controllers/HomeController/Submit" method="post">
+    <input type="text" id="symbol" name="symbol" />
+    <input type="text" id="startDate" name="startDate" />
+    <input type="text" id="endDate" name="endDate" />
+    <input name="submit" type="submit" value="submit" />
+</form>
 
 
 
