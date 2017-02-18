@@ -77,3 +77,9 @@ C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_D
 C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\obj\Debug\Stock_Data_Finder.csprojResolveAssemblyReference.cache
 C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\obj\Debug\Stock_Data_Finder.dll
 C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\obj\Debug\Stock_Data_Finder.pdb
+C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\bin\System.Net.Http.Formatting.dll
+C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\bin\System.Web.Http.dll
+C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\bin\System.Web.Http.WebHost.dll
+C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\bin\System.Net.Http.Formatting.xml
+C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\bin\System.Web.Http.xml
+C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\Stock_Data_Finder\Stock_Data_Finder\bin\System.Web.Http.WebHost.xml
