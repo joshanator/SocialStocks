@@ -32,9 +32,8 @@ namespace Stock_Data_Finder
                  
                 csvData = web.DownloadString(downloadString);
 
-                //List<StockInfo> stocks = YahooFinance.Parse(csvData);
-                //return View(stocks);
-
+                Models.StockList stocks = Models.YahooFinance.Parse(csvData, Symbol, startDate, endDate);
+                //return stocks;
 
 
             }
