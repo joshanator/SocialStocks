@@ -31,7 +31,7 @@ $opts = array(
 //search query
 $context = stream_context_create($opts);
 //EX q: from:VT_Hacks since:2015-12-21 until:2017-01-01
-$json = file_get_contents($api_base . '1.1/search/tweets.json?count=1000&result_type=recent&q=' . '%23mlh',false,$context);//. urlencode(htmlspecialchars($_GET["q"])) ,false,$context);
+$json = file_get_contents($api_base . '1.1/search/tweets.json?count=500&result_type=' . urlencode(htmlspecialchars($_GET["type"])) . '&until=2017-02-18&q=' . urlencode(htmlspecialchars($_GET["q"])) ,false,$context);
 //parse query
 $tweets = json_decode($json,true);
 
