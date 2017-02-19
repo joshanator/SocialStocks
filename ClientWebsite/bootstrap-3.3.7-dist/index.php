@@ -157,9 +157,9 @@
                     <div id="menu4" class="tab-pane fade">
                       <h3>Suggested</h3>
                       <p>
+                          <a href="index.php?symbol=TWX&user=realDonaldTrump&keyword=media"><button class="btn btn-default btn-lg">User: Time Warner Stock vs. Trump Tweeting "media"</button></a>
                           <a href="index.php?symbol=LUV&q=flight+%3A%28&type=popular"><button class="btn btn-default btn-lg">Recent: Southwest Airlines Stock vs. Popular Negative Posts About Flights</button></a>
-                          <a href="index.php?symbol=LUV&q=flight+%3A%28&type=popular"><button class="btn btn-default btn-lg">Recent: Southwest Airlines Stock vs. Popular Negative Posts About Flights</button></a>
-                          <a href="index.php?symbol=MSTR"><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
+                          <a href="index.php?symbol="><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
                         </p>
                     </div>    
                 </div>
@@ -176,7 +176,7 @@
             <div class="panel-body">
                 <?php
                       if(isset($_GET['symbol']) && isset($_GET['user']) && isset($_GET['keyword'])) {
-                          //echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=BF2811294EDE067FBDA24E9F14B4FC25&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['symbol'] . '^2016-02-10%252000%253A00^2017-02-10%252000%253A00"></iframe>';
+                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=C27AE4DF4B6A06724CB455A4BA594F54&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&valuePromptAnswers=' . $_GET['symbol'] . '^' . $_GET['user'] . '^' . $_GET['keyword'] . '"></iframe>';
                       }
                       else if(isset($_GET['symbol']) && isset($_GET['hashtag'])) {
                           //echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=BF2811294EDE067FBDA24E9F14B4FC25&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['symbol'] . '^2016-02-10%252000%253A00^2017-02-10%252000%253A00"></iframe>';
