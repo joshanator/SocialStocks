@@ -44,7 +44,6 @@
             <li class="active"><a href="index.php">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="documentation.html">API Documentation</a></li>
-            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
