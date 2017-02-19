@@ -61,14 +61,17 @@
               
               
               <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">Recent</a></li>
-                    <li><a data-toggle="tab" href="#menu1">User</a></li>
+<!--                    <li class="active"><a data-toggle="tab" href="#home">Recent</a></li>-->
+                    <li class="active"><a data-toggle="tab" href="#menu1">User</a></li>
                     <li><a data-toggle="tab" href="#menu2">Trends</a></li>
                   <li><a data-toggle="tab" href="#menu3">Stock</a></li>
                   <li><a data-toggle="tab" href="#menu4">Suggested</a></li>
               </ul>
               
+
                 <div class="tab-content">
+                    
+<!--
                     <div id="home" class="tab-pane fade in active">
                       <h3>Search Recent(6-9 Day old) Data</h3>
                       <p>
@@ -88,11 +91,14 @@
 
                             <button type="submit" class="btn btn-success">Search</button>
                         </form>
+
                         
                         
                         </p>
                     </div>
-                    <div id="menu1" class="tab-pane fade">
+-->
+              
+                    <div id="menu1" class="tab-pane fade in active">
                       <h3>Search Data From a Specific User</h3>
                       <p>
                           
@@ -158,7 +164,7 @@
                       <h3>Suggested</h3>
                       <p>
                           <a href="index.php?symbol=TWX&user=realDonaldTrump&keyword=media"><button class="btn btn-default btn-lg">User: Time Warner Stock vs. Trump Tweeting "media"</button></a>
-                          <a href="index.php?symbol=LUV&q=flight+%3A%28&type=popular"><button class="btn btn-default btn-lg">Recent: Southwest Airlines Stock vs. Popular Negative Posts About Flights</button></a>
+<!--                          <a href="index.php?symbol=LUV&q=flight+%3A%28&type=popular"><button class="btn btn-default btn-lg">Recent: Southwest Airlines Stock vs. Popular Negative Posts About Flights</button></a>-->
                           <a href="index.php?symbol="><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
                         </p>
                     </div>    
