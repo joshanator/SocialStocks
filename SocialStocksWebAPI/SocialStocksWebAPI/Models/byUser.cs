@@ -174,19 +174,22 @@ namespace SocialStocksWebAPI.Models
             byUserSolo justTweetsList = new byUserSolo();
             List<tweetsByUserSolo> justTweets = new List<tweetsByUserSolo>();
 
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(data);
-            foreach (var kv in dict)
+            if(data.Length > 2)
             {
-                tweetsByUserSolo tweet = new tweetsByUserSolo();
-                string date = kv.Key.Trim();
-                date = date.Insert(2, "-");
-                date = date.Insert(5, "-");
-                tweet.date = Convert.ToDateTime(date);
-                tweet.count = Convert.ToInt16(kv.Value.Trim());
-                justTweets.Add(tweet);
-            }
-            justTweetsList.justTweets = justTweets;
+                var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(data);
+                foreach (var kv in dict)
+                {
+                    tweetsByUserSolo tweet = new tweetsByUserSolo();
+                    string date = kv.Key.Trim();
+                    date = date.Insert(2, "-");
+                    date = date.Insert(5, "-");
+                    tweet.date = Convert.ToDateTime(date);
+                    tweet.count = Convert.ToInt16(kv.Value.Trim());
+                    justTweets.Add(tweet);
+                }
+                justTweetsList.justTweets = justTweets;
 
+            }
             return justTweetsList;
         }
     }

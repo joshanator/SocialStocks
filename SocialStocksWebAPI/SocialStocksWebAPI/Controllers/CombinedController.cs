@@ -23,7 +23,7 @@ namespace SocialStocksWebAPI.Controllers
                 string tData = web.DownloadString(TDataUrl);
                 Models.twitterTrending trendingData = Models.Twitter.Parse(tData, Hashtag);
                 twitterData = trendingData.tweetList;
-                start = twitterData[0].date;
+                 start = twitterData[0].date;
                 end = twitterData[twitterData.Count - 1].date;
 
                 string SDataUrl = "http://" + HttpContext.Current.Request["HTTP_HOST"]
