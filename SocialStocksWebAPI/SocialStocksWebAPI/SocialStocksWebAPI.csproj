@@ -115,11 +115,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CombinedController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\TwitterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Combined.cs" />
     <Compile Include="Models\StockInfo.cs" />
     <Compile Include="Models\StockList.cs" />
     <Compile Include="Models\TwitterTrending.cs" />

@@ -27,6 +27,9 @@ namespace SocialStocksWebAPI.Models
 
             List<tweets> tweetData = new List<tweets>();
 
+            data.Replace("date", "");
+            data.Replace("value", "");
+
             var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(data);
             foreach(var kv in dict)
             {
