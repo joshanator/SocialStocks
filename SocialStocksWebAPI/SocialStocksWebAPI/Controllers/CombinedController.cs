@@ -53,7 +53,6 @@ namespace SocialStocksWebAPI.Controllers
             comboData.symbol = symbol;
 
             return comboData.dataList;
-
         }
     }
 }
