@@ -30,20 +30,21 @@ $opts = array(
 );
 //search query
 $context = stream_context_create($opts);
-$json = file_get_contents($api_base . '1.1/search/tweets.json?q=' . urlencode('from:VT_Hacks since:2015-12-21 until:2017-01-01') ,false,$context);
+//EX q: from:VT_Hacks since:2015-12-21 until:2017-01-01
+$json = file_get_contents($api_base . '1.1/search/tweets.json?q=' . urlencode(htmlspecialchars($_GET["q"])) ,false,$context);
 //parse query
 $tweets = json_decode($json,true);
-echo "---------------------------------------\r\n";
+
 $dates = array();
 for($i = 0; $i < count($tweets['statuses']); $i++) {
 	//Sat Feb 18 13:52:37 +0000 2017
 	$date = DateTime::createFromFormat('D M d H:i:s O Y', $tweets['statuses'][$i]['created_at']);
-	if(array_key_exists($date->format('Y-M-D'), $dates))
-		$dates[$date->format('Y-M-D')]++;
+	if(array_key_exists($date->format('mdY'), $dates))
+		$dates[$date->format('mdY')]++;
 	else
-		$dates[$date->format('Y-M-D')] = 1;
-	echo $tweets['statuses'][$i]['text'] . "\r\n";
+		$dates[$date->format('mdY')] = 1;
+	//echo $tweets['statuses'][$i]['text'] . "\r\n";
 }
-echo "---------------------------------------\r\n";
-print_r($dates);
+
+echo json_encode($dates);
 ?>

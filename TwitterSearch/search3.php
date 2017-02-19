@@ -10,7 +10,7 @@
 		$src = new DOMDocument('1.0', 'utf-8');
 		$src->formatOutput = true;
 		$src->preserveWhiteSpace = false;
-		$content = file_get_contents('https://trendogate.com/search/?trend=' . 'draintheswamp' . '&page=' . $page);
+		$content = file_get_contents('https://trendogate.com/search/?trend=' . htmlspecialchars($_GET["q"]) . '&page=' . $page);
 		@$src->loadHTML($content);
 		$xpath = new DOMXPath($src);
 		$values=$xpath->query('//td');
@@ -24,19 +24,17 @@
 				if($tweets[$i] != null)
 					$nextPage = true;
 
-				if(array_key_exists($tweets[$i]->format('Y-M-D'), $dates))
-					$dates[$tweets[$i]->format('Y-M-D')]++;
+				if(array_key_exists($tweets[$i]->format('mdY'), $dates))
+					$dates[$tweets[$i]->format('mdY')]++;
 				else
-					$dates[$tweets[$i]->format('Y-M-D')] = 1;
-
-				echo $value->nodeValue . "\r\n";
+					$dates[$tweets[$i]->format('mdY')] = 1;
 			}
 			$i++;
 		}
 		$page++;
 	}
 
-	print_r($dates);
+	echo json_encode($dates);
 
 
 ?>
