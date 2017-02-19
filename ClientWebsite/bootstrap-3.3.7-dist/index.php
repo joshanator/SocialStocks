@@ -65,6 +65,7 @@
                     <li><a data-toggle="tab" href="#menu1">User</a></li>
                     <li><a data-toggle="tab" href="#menu2">Trends</a></li>
                   <li><a data-toggle="tab" href="#menu3">Stock</a></li>
+                  <li><a data-toggle="tab" href="#menu4">Suggested</a></li>
               </ul>
               
                 <div class="tab-content">
@@ -75,6 +76,10 @@
 
                             <div class="form-group">
                                 <input type="text" name="symbol" placeholder="Stock Symbol" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="type" placeholder="Recent(limited to last 100 posts) or Popular" class="form-control">
                             </div>
                             
                             <div class="form-group">
@@ -148,6 +153,15 @@
                         
                         </p>
                     </div>
+        
+                    <div id="menu4" class="tab-pane fade">
+                      <h3>Suggested</h3>
+                      <p>
+                          <a href="index.php?symbol=TWX&user=realDonaldTrump&keyword=media"><button class="btn btn-default btn-lg">User: Time Warner Stock vs. Trump Tweeting "media"</button></a>
+                          <a href="index.php?symbol=LUV&q=flight+%3A%28&type=popular"><button class="btn btn-default btn-lg">Recent: Southwest Airlines Stock vs. Popular Negative Posts About Flights</button></a>
+                          <a href="index.php?symbol="><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
+                        </p>
+                    </div>    
                 </div>
               
               
@@ -161,7 +175,16 @@
             </div>
             <div class="panel-body">
                 <?php
-                      if(isset($_GET['q'])) {
+                      if(isset($_GET['symbol']) && isset($_GET['user']) && isset($_GET['keyword'])) {
+                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=87AA2CB64AAA87A4381B54A734728DB9&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&valuePromptAnswers=' . $_GET['symbol'] . '^' . $_GET['user'] . '^' . $_GET['keyword'] . '"></iframe>';
+                      }
+                      else if(isset($_GET['symbol']) && isset($_GET['hashtag'])) {
+                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=7B6DDE61405655A3CC812BB0621F3184&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&valuePromptAnswers=' . $_GET['hashtag'] . "^" . $_GET['symbol'] . '"></iframe>';
+                      }
+                      else if(isset($_GET['symbol']) && isset($_GET['q'])) {
+                          //echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=BF2811294EDE067FBDA24E9F14B4FC25&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['symbol'] . '^2016-02-10%252000%253A00^2017-02-10%252000%253A00"></iframe>';
+                      }
+                      else if(isset($_GET['symbol'])) {
                           echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=BF2811294EDE067FBDA24E9F14B4FC25&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['symbol'] . '^2016-02-10%252000%253A00^2017-02-10%252000%253A00"></iframe>';
                       }
                 ?>
