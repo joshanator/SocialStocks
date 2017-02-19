@@ -10,4 +10,14 @@ namespace SocialStocksWebAPI.Models
         public DateTime date { get; set; }
         public decimal price { get; set; }
     }
+
+    public class StockInfoDetailed
+    {
+        public DateTime date { get; set; }
+        public decimal Open { get; set; }
+        public decimal High { get; set; }
+        public decimal Low { get; set; }
+        public decimal Close { get; set; }
+        public decimal AdjClose { get; set; }
+    }
 }
