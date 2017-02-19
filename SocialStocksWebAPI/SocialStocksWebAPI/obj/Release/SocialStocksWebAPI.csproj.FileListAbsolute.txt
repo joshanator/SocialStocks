@@ -38,3 +38,4 @@ C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\SocialStocksWebAPI\Social
 C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\SocialStocksWebAPI\SocialStocksWebAPI\bin\System.Web.Http.WebHost.xml
 C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\SocialStocksWebAPI\SocialStocksWebAPI\obj\Release\SocialStocksWebAPI.dll
 C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\SocialStocksWebAPI\SocialStocksWebAPI\obj\Release\SocialStocksWebAPI.pdb
+C:\Users\Joshua Peterson\Documents\GitHub\SocialStocks\SocialStocksWebAPI\SocialStocksWebAPI\obj\Release\SocialStocksWebAPI.csprojResolveAssemblyReference.cache
