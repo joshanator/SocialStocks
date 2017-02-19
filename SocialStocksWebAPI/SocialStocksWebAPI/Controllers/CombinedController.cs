@@ -14,6 +14,8 @@ namespace SocialStocksWebAPI.Controllers
         {
             List<Models.tweets> twitterData = new List<Models.tweets>();
             List<Models.StockInfo> stockData = new List<Models.StockInfo>();
+            DateTime start;
+            DateTime end;
 
             using (System.Net.WebClient web = new WebClient())
             {
@@ -21,10 +23,11 @@ namespace SocialStocksWebAPI.Controllers
                 string tData = web.DownloadString(TDataUrl);
                 Models.twitterTrending trendingData = Models.Twitter.Parse(tData, Hashtag);
                 twitterData = trendingData.tweetList;
-                DateTime start = twitterData[0].date;
+                start = twitterData[0].date;
+                end = twitterData[twitterData.Count - 1].date;
 
                 string SDataUrl = "http://" + HttpContext.Current.Request["HTTP_HOST"]
-                    + "/api/Stocks/?symbol=" + symbol + "&start=" + start;
+                    + "/api/Stocks/?symbol=" + symbol + "&start=" + start + "&end=" + end;
                 string sData = web.DownloadString(SDataUrl);
                 sData = sData.Substring(1, sData.Length - 2);
                 sData = sData.Replace("date", "");
@@ -48,7 +51,7 @@ namespace SocialStocksWebAPI.Controllers
                 }
             }
 
-            Models.Combined comboData = Models.combinedConstructor.Parse(twitterData, stockData);
+            Models.Combined comboData = Models.combinedConstructor.Parse(twitterData, stockData, start, end);
             comboData.hashtag = Hashtag;
             comboData.symbol = symbol;
 
