@@ -176,7 +176,7 @@
             <div class="panel-body">
                 <?php
                       if(isset($_GET['symbol']) && isset($_GET['user']) && isset($_GET['keyword'])) {
-                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=C27AE4DF4B6A06724CB455A4BA594F54&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&valuePromptAnswers=' . $_GET['symbol'] . '^' . $_GET['user'] . '^' . $_GET['keyword'] . '"></iframe>';
+                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=87AA2CB64AAA87A4381B54A734728DB9&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&valuePromptAnswers=' . $_GET['symbol'] . '^' . $_GET['user'] . '^' . $_GET['keyword'] . '"></iframe>';
                       }
                       else if(isset($_GET['symbol']) && isset($_GET['hashtag'])) {
                           echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=7B6DDE61405655A3CC812BB0621F3184&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&valuePromptAnswers=' . $_GET['hashtag'] . "^" . $_GET['symbol'] . '"></iframe>';
