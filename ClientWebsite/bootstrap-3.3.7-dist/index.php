@@ -65,6 +65,7 @@
                     <li class="active"><a data-toggle="tab" href="#home">Recent</a></li>
                     <li><a data-toggle="tab" href="#menu1">User</a></li>
                     <li><a data-toggle="tab" href="#menu2">Trends</a></li>
+                  <li><a data-toggle="tab" href="#menu3">Stock</a></li>
               </ul>
               
                 <div class="tab-content">
@@ -131,6 +132,23 @@
                         
                         </p>
                     </div>
+                    <div id="menu3" class="tab-pane fade">
+                      <h3>Search Stock Data</h3>
+                      <p>
+                          
+                          <form class="" action="index.php">
+                              
+                            <div class="form-group">
+                                <input type="text" name="symbol" placeholder="Stock Symbol" class="form-control">
+                            </div>
+
+
+                            <button type="submit" class="btn btn-success">Search</button>
+                        </form>
+                        
+                        
+                        </p>
+                    </div>
                 </div>
               
               
@@ -145,7 +163,7 @@
             <div class="panel-body">
                 <?php
                       if(isset($_GET['q'])) {
-                          echo file_get_contents('http://socialstockswebapi.azurewebsites.net/com');
+                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=BF2811294EDE067FBDA24E9F14B4FC25&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['symbol'] . '^2016-02-10%252000%253A00^2017-02-10%252000%253A00"></iframe>';
                       }
                 ?>
             </div>
