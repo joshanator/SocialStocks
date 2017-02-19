@@ -31,7 +31,7 @@ $opts = array(
 //search query
 $context = stream_context_create($opts);
 
-$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=100&trim_user=true&exclude_replies=true&screen_name=' . $_GET['user'] ,false,$context);
+$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=1000&trim_user=true&exclude_replies=true&screen_name=' . $_GET['user'] ,false,$context);
 //parse query
 $tweets = json_decode($json,true);
 
