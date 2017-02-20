@@ -165,7 +165,7 @@
                       <p>
                           <a href="index.php?symbol=TWX&user=realDonaldTrump&keyword=media"><button class="btn btn-default btn-lg">User: Time Warner Stock vs. Trump Tweeting "media"</button></a>
 <!--                          <a href="index.php?symbol=LUV&q=flight+%3A%28&type=popular"><button class="btn btn-default btn-lg">Recent: Southwest Airlines Stock vs. Popular Negative Posts About Flights</button></a>-->
-                          <a href="index.php?symbol=MSTR&start=2016-02-19&end=2017-02-19"><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
+                          <a href="index.php?symbol="><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
                         </p>
                     </div>    
                 </div>
