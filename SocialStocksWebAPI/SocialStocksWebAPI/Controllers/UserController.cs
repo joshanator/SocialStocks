@@ -84,6 +84,34 @@ namespace SocialStocksWebAPI.Controllers
             return userData.userTweetList;
         }
 
+        public List<Models.tweetsByUserMultiple> Get(string symbol1, string symbol2, string user, string keyword)
+        {
+            string[] symbols = { symbol1, symbol2 };
+
+            Models.byUserMultiple userData = new Models.byUserMultiple();
+            List<Models.StockInfo> stockData = new List<Models.StockInfo>();
+            List<Models.tweetsByUserSolo> soloData = new List<Models.tweetsByUserSolo>();
+
+            using (System.Net.WebClient web = new WebClient())
+            {
+                string userDataUrl = "http://socialstocks.us-west-2.elasticbeanstalk.com/TwitterSearch/search2.php?"
+                + "user=" + user + "&q=" + keyword;
+                string tData = web.DownloadString(userDataUrl);
+                if (tData == "[]") return userData.userTweetList;
+                Models.byUserSolo s = Models.byUserConstructor.Parse(tData);
+                soloData = s.justTweets;
+                DateTime start = soloData[0].date;
+                TimeSpan span = new TimeSpan(10, 0, 0, 0);
+                start = start.Subtract(span);
+
+                userData = Models.byUserConstructor.Parse(soloData, start, symbols);
+            }
+            userData.keyword = keyword;
+            userData.symbols = symbols;
+            userData.user = user;
+
+            return userData.userTweetList;
+        }
 
     }
 }

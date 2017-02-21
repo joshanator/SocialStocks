@@ -22,6 +22,21 @@ namespace SocialStocksWebAPI.Models
         public int count { get; set; }
     }
 
+    public class byUserMultiple
+    {
+        public string user { get; set; }
+        public string[] symbols { get; set; }
+        public string keyword { get; set; }
+        public List<tweetsByUserMultiple> userTweetList { get; set; }
+    }
+    public class tweetsByUserMultiple
+    {
+        public DateTime date { get; set; }
+
+        public decimal[] prices { get; set; }
+        public int count { get; set; }
+    }
+
     public class byUserSolo
     {
         public List<tweetsByUserSolo> justTweets { get; set; }
@@ -168,13 +183,91 @@ namespace SocialStocksWebAPI.Models
             return final;
         }
 
+        public static byUserMultiple Parse(List<tweetsByUserSolo> tList, DateTime start, string[] symbols)
+        {
+            byUserMultiple final = new byUserMultiple();
+            List<tweetsByUserMultiple> finalList = new List<tweetsByUserMultiple>();
+            List<Models.StockList> stocks = new List<Models.StockList>();
+
+            DateTime startDate = start;
+            DateTime endDate = DateTime.Today;
+
+            string csvData;
+            using (System.Net.WebClient web = new WebClient())
+            {
+                foreach (string Symbol in symbols)
+                {
+                    string downloadString = "http://chart.finance.yahoo.com/table.csv?s="
+                    + Symbol
+                    + "&a=" + (startDate.Month - 1) + "&b=" + startDate.Day + "&c=" + startDate.Year
+                    + "&d=" + (endDate.Month - 1) + "&e=" + endDate.Day + "&f=" + endDate.Year
+                    + "&g=d&ignore=.csv";
+
+                    csvData = web.DownloadString(downloadString);
+
+                    stocks.Add(Models.YahooFinance.Parse(csvData, Symbol, startDate, endDate));
+                }
+
+            }
+
+            DateTime cur = start;
+            while (cur <= DateTime.Now)
+            {
+                tweetsByUserMultiple temp = new tweetsByUserMultiple();
+                temp.date = cur;
+                temp.prices = new decimal[symbols.Length];
+                int i = 0;
+                foreach (Models.StockList sList in stocks)
+                {
+                    foreach (Models.StockInfo s in sList.dataList)
+                    {
+                        if (s.date == cur)
+                        {
+                            temp.prices[i] = s.price;
+                        }
+                    }
+                    i++;
+                }
+
+                foreach (tweetsByUserSolo t in tList)
+                {
+                    if (t.date == cur)
+                    {
+                        temp.count = t.count;
+                    }
+                }
+                cur = cur.AddDays(1);
+
+                finalList.Add(temp);
+            }
+
+            for (int i = 0; i < finalList.Count; i++)
+            {
+                for (int j = 0; j < symbols.Length; j++)
+                {
+                    if (finalList[i].prices[j] == 0 && i > 0)
+                    {
+                        finalList[i].prices[j] = finalList[i - 1].prices[j];
+                    }
+                    /*else if (finalList[i].prices[j] == 0 && i == 0)
+                    {
+                        finalList.RemoveAt(i);
+                        i--;
+                    }*/
+                }
+            }
+
+            final.userTweetList = finalList;
+            return final;
+        }
+
 
         public static byUserSolo Parse(string data)
         {
             byUserSolo justTweetsList = new byUserSolo();
             List<tweetsByUserSolo> justTweets = new List<tweetsByUserSolo>();
 
-            if(data.Length > 2)
+            if (data.Length > 2)
             {
                 var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(data);
                 foreach (var kv in dict)
@@ -192,5 +285,8 @@ namespace SocialStocksWebAPI.Models
             }
             return justTweetsList;
         }
+
+
+
     }
 }
