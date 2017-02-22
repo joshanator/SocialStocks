@@ -32,8 +32,15 @@ $opts = array(
 $context = stream_context_create($opts);
 
 $json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=200&trim_user=true&exclude_replies=true&screen_name=' . $_GET['user'] ,false,$context);
-//parse query
 $tweets = json_decode($json,true);
+
+for($i = 0; $i < 10; $i++) {
+	$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=200&trim_user=true&exclude_replies=true&max_id=' . $tweets[count($tweets) - 1]['id_str'] . '&screen_name=' . $_GET['user'] ,false,$context);
+	$temp = $tweets;
+	$tweets = array_merge($temp, json_decode($json,true));
+}
+
+
 
 $keyword=$_GET['q'];
 $dates = array();
