@@ -18,13 +18,13 @@ namespace SocialStocksWebAPI.Controllers
 
             using (System.Net.WebClient web = new WebClient())
             {
-                string userDataUrl = "http://socialstocks.us-west-2.elasticbeanstalk.com/TwitterSearch/search2.php?"
+                string userDataUrl = "http://socialstocks.net/TwitterSearch/search2.php?"
                 + "user=" + user + "&q=" + keyword;
                 string tData = web.DownloadString(userDataUrl);
                 if (tData == "[]") return userData.userTweetList;
                 Models.byUserSolo s = Models.byUserConstructor.Parse(tData);
                 soloData = s.justTweets;
-                DateTime start = soloData[0].date;
+                DateTime start = soloData[s.justTweets.Count-1].date;
                 TimeSpan span = new TimeSpan(10, 0, 0, 0);
                 start = start.Subtract(span);
 
@@ -45,7 +45,7 @@ namespace SocialStocksWebAPI.Controllers
 
             using (System.Net.WebClient web = new WebClient())
             {
-                string userDataUrl = "http://socialstocks.us-west-2.elasticbeanstalk.com/TwitterSearch/search2.php?"
+                string userDataUrl = "http://socialstocks.net/TwitterSearch/search2.php?"
                 + "user=" + user + "&q=" + keyword;
                 string tData = web.DownloadString(userDataUrl);
                 if (tData == "[]") return userData.userTweetList;
@@ -68,7 +68,7 @@ namespace SocialStocksWebAPI.Controllers
 
             using (System.Net.WebClient web = new WebClient())
             {
-                string userDataUrl = "http://socialstocks.us-west-2.elasticbeanstalk.com/TwitterSearch/search2.php?"
+                string userDataUrl = "http://socialstocks.net/TwitterSearch/search2.php?"
                 + "user=" + user + "&q=" + keyword;
                 string tData = web.DownloadString(userDataUrl);
                 if (tData == "[]") return userData.userTweetList;
@@ -94,13 +94,13 @@ namespace SocialStocksWebAPI.Controllers
 
             using (System.Net.WebClient web = new WebClient())
             {
-                string userDataUrl = "http://socialstocks.us-west-2.elasticbeanstalk.com/TwitterSearch/search2.php?"
+                string userDataUrl = "http://socialstocks.net/TwitterSearch/search2.php?"
                 + "user=" + user + "&q=" + keyword;
                 string tData = web.DownloadString(userDataUrl);
                 if (tData == "[]") return userData.userTweetList;
                 Models.byUserSolo s = Models.byUserConstructor.Parse(tData);
                 soloData = s.justTweets;
-                DateTime start = soloData[0].date;
+                DateTime start = soloData[s.justTweets.Count - 1].date;
                 TimeSpan span = new TimeSpan(10, 0, 0, 0);
                 start = start.Subtract(span);
 

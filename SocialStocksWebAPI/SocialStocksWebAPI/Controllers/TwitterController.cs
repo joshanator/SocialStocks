@@ -11,7 +11,7 @@ namespace SocialStocksWebAPI.Controllers
     {
         public List<Models.tweets> Get(string Hashtag)
         {
-            string url = "http://socialstocks.us-west-2.elasticbeanstalk.com/TwitterSearch/search3.php?q=" + Hashtag;
+            string url = "http://socialstocks.net/TwitterSearch/search3.php?q=" + Hashtag;
 
             using (System.Net.WebClient web = new WebClient())
             {
