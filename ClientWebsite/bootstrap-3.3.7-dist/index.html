@@ -211,11 +211,12 @@
         
         
         function formPost(obj) {
+            resetURL();
             console.log($(obj).parent("form").find("input"));
             $.each($(obj).parent("form").find("input"), function(i, element) {
                 addURLParam($(element).prop('name'), $(element).prop('value'));
             });
-            setURL()
+            setURL();
             update();
         }
         
