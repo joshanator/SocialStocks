@@ -31,7 +31,7 @@ $opts = array(
 //search query
 $context = stream_context_create($opts);
 
-$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=1000&trim_user=true&exclude_replies=true&screen_name=' . $_GET['user'] ,false,$context);
+$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=200&trim_user=true&exclude_replies=true&screen_name=' . $_GET['user'] ,false,$context);
 //parse query
 $tweets = json_decode($json,true);
 
@@ -41,7 +41,7 @@ for($i = 0; $i < count($tweets); $i++) {
 	//Sat Feb 18 13:52:37 +0000 2017
 	$date = DateTime::createFromFormat('D M d H:i:s O Y', $tweets[$i]['created_at']);
 
-	if(strpos($tweets[$i]['text'], $keyword) !== false) {
+	if(strpos(strtoupper($tweets[$i]['text']), strtoupper($keyword)) !== false) {
 		if(array_key_exists($date->format('mdY'), $dates))
 			$dates[$date->format('mdY')]++;
 		else
