@@ -41,7 +41,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home</a></li>
+            <li class="active"><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="documentation.html">API Documentation</a></li>
           </ul>
@@ -61,7 +61,7 @@
               
               
               <ul class="nav nav-tabs">
-<!--                    <li class="active"><a data-toggle="tab" href="#home">Recent</a></li>-->
+<!--                    <li class="active"><a data-toggle="tab" href="#home">Recentc</a></li>-->
                     <li class="active"><a data-toggle="tab" href="#menu1">User</a></li>
                     <li><a data-toggle="tab" href="#menu2">Trends</a></li>
                   <li><a data-toggle="tab" href="#menu3">Stock</a></li>
@@ -102,7 +102,7 @@
                       <h3>Search Data From a Specific User</h3>
                       <p>
                           
-                          <form class="" action="index.php">
+                          <form class="">
 
                             <div class="form-group">
                                 <input type="text" name="symbol" placeholder="Stock Symbol" class="form-control">
@@ -116,7 +116,7 @@
                                 <input type="text" name="keyword" placeholder="Keyword" class="form-control">
                             </div>
 
-                            <button type="submit" class="btn btn-success">Search</button>
+                            <button type="button" onClick="formPost(this)" class="btn btn-success">Search</button>
                         </form>
                         
                         </p>
@@ -125,7 +125,7 @@
                       <h3>Search From Historical(2006 - Present) Trending Hashtags</h3>
                       <p>
                           
-                          <form class="" action="index.php">
+                          <form class="">
                               
                             <div class="form-group">
                                 <input type="text" name="symbol" placeholder="Stock Symbol" class="form-control">
@@ -136,7 +136,7 @@
                                 <input type="text" name="hashtag" placeholder="Hashtag" class="form-control">
                             </div>
 
-                            <button type="submit" class="btn btn-success">Search</button>
+                            <button type="button" onClick="formPost(this)" class="btn btn-success">Search</button>
                         </form>
                         
                         
@@ -151,9 +151,13 @@
                             <div class="form-group">
                                 <input type="text" name="symbol" placeholder="Stock Symbol" class="form-control">
                             </div>
+                            <div class="form-group">
+                                <input type="text" name="start" placeholder="Start Date (YYYY-MM-DD)" class="form-control">
+                                <input type="text" name="end" placeholder="End Date (YYYY-MM-DD)" class="form-control">
+                            </div>
 
 
-                            <button type="submit" class="btn btn-success">Search</button>
+                            <button type="button" onClick="formPost(this)" class="btn btn-success">Search</button>
                         </form>
                         
                         
@@ -163,9 +167,10 @@
                     <div id="menu4" class="tab-pane fade">
                       <h3>Suggested</h3>
                       <p>
-                          <a href="index.php?symbol=TWX&user=realDonaldTrump&keyword=media"><button class="btn btn-default btn-lg">User: Time Warner Stock vs. Trump Tweeting "media"</button></a>
+                          <a href="/?symbol=TWX&user=realDonaldTrump&keyword=media"><button class="btn btn-default btn-lg">User: Time Warner Stock vs. Trump Tweeting "media"</button></a>
+                        <a href="/?symbol=KRX&hashtag=note7&"><button class="btn btn-default btn-lg">Trends: Samsung stock vs. #note7 Trending</button></a>
 <!--                          <a href="index.php?symbol=LUV&q=flight+%3A%28&type=popular"><button class="btn btn-default btn-lg">Recent: Southwest Airlines Stock vs. Popular Negative Posts About Flights</button></a>-->
-                          <a href="index.php?symbol=MSTR&start=2016-02-19&end=2017-02-19="><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
+                          <a href="/?symbol=MSTR&start=2016-02-19&end=2017-02-19"><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
                         </p>
                     </div>    
                 </div>
@@ -180,20 +185,10 @@
                 <h3 class="panel-title">Results</h3>
             </div>
             <div class="panel-body">
-                <?php
-                      if(isset($_GET['symbol']) && isset($_GET['user']) && isset($_GET['keyword'])) {
-                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=87AA2CB64AAA87A4381B54A734728DB9&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['symbol'] . '^' . $_GET['user'] . '^' . $_GET['keyword'] . '"></iframe>';
-                      }
-                      else if(isset($_GET['symbol']) && isset($_GET['hashtag'])) {
-                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=7B6DDE61405655A3CC812BB0621F3184&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['hashtag'] . "^" . $_GET['symbol'] . '"></iframe>';
-                      }
-                      else if(isset($_GET['symbol']) && isset($_GET['q'])) {
-                          //echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=BF2811294EDE067FBDA24E9F14B4FC25&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['symbol'] . '^2016-02-10%252000%253A00^2017-02-10%252000%253A00"></iframe>';
-                      }
-                      else if(isset($_GET['symbol'])) {
-                          echo '<iframe width="1000" height="450" src="https://env-48431.customer.cloud.microstrategy.com:443/MicroStrategy/servlet/mstrWeb?evt=4001&src=mstrWeb.4001&visMode=0&reportViewMode=2&reportID=BF2811294EDE067FBDA24E9F14B4FC25&Server=ENV-48431LAIOUSE1&Project=MicroStrategy%20Tutorial&Port=0&share=1&hiddensections=header,path,dockTop,dockLeft,footer&uid=mstr&pwd=Wr3aCTg53uOp&ConnMode=1&valuePromptAnswers=' . $_GET['symbol'] . '^2016-02-10%252000%253A00^2017-02-10%252000%253A00"></iframe>';
-                      }
-                ?>
+                
+                <iframe id="graph" width="1000" height="450" src=""></iframe>;
+                
+                
             </div>
         </div>
               
@@ -202,6 +197,62 @@
 
     </div><!-- /.container -->
       
+
+
+
+
+
+    <script>
+        
+        initialURL = window.location.href + "?";
+        if(window.location.href.indexOf('?') != -1)
+            initialURL = window.location.href.slice(0, window.location.href.indexOf('?')) + "?";
+        
+        URL = initialURL;
+        
+        
+        function formPost(obj) {
+            resetURL();
+            console.log($(obj).parent("form").find("input"));
+            $.each($(obj).parent("form").find("input"), function(i, element) {
+                addURLParam($(element).prop('name'), $(element).prop('value'));
+            });
+            setURL();
+            update();
+        }
+        
+        
+        function resetURL() {
+            URL = initialURL;
+        }
+        
+        function addURLParam(key, value) {
+            URL += key + "=" + value + "&"; 
+        }
+        
+        function setURL() {
+            window.history.pushState("", "Social Stocks | Search", URL);
+        }
+        
+        
+        
+        function update() {
+            console.log('updating...');
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                console.log(this.responseText);
+                if (this.readyState == 4 && this.status == 200) {
+                    $('iframe#graph').attr('src', this.responseText);
+                }
+            };
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1);
+            console.log("getURL.php?" + hashes);
+            xhttp.open("GET", "getURL.php?" + hashes, true);
+            xhttp.send();
+        }
+        
+        update()
+    </script>
       
       
     
