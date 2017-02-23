@@ -1,0 +1,7 @@
+#! /usr/bin/env perl
+
+while (<STDIN>) {
+  s/(?<=connectionString=").*?(?=")/ /;
+  s/(?<=value=").*?(?=")/ /;
+  print $_;
+}

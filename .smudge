@@ -1,0 +1,12 @@
+#! /usr/bin/env perl
+
+while (<STDIN>) {
+	#Populate ConnectionStrings
+	s/(?<=name="DefaultConnection" connectionString=")\s(?=")/Data Source=(local);Initial Catalog=DatabaseName;User Id=User;Password=Password/g;
+	  
+	#Populate AppSettings
+	s/(?<=key="Key1" value=")\s(?=")/Value1/g;
+	s/(?<=key="Key2" value=")\s(?=")/Value2/g;
+	
+	print $_;
+}
