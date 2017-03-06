@@ -8,8 +8,10 @@
     <title>Social Stocks | About</title>
 
     <!-- Bootstrap -->
+    <link href="css/about.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
+    
       
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       
@@ -37,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Social Stocks</a>
+          <a class="navbar-brand" href="index.html"">Social Stocks</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -49,49 +51,71 @@
       </div>
     </nav>
 
-    <div class="" style="margin:0px; padding:0px; width:100%;">
+    <div class="container-fluid" style="margin:0px; padding:0px;">
 
       
-        <div style="width:100%; height:500px; background:url(img/stocks.jpeg); text-align:center;">
+        <div class="container-fluid title" style="background:url(img/stocks.jpeg); padding-top:150px;">
             <br><br><br>
-            <h1 style="color:white; font-size:70px; font-weight:500;">About</h1>
-        
-        
+            <h1>About</h1>
         </div>
         
-        <div style="width:100%; height:300px; padding:70px; padding-left:20%; padding-right:20%; font-size: 20px; text-align:center; letter-spacing: 2px;">
+        
+        <div class="container-fluid desc" style="min-height:300px;">
             <p>The goal of social stocks is to provide an easy to use and expandable platform to analyze correlations between social media data(Tweets) and stock market data. The Social Stocks API aggregates data from a number of sources including yahoo finance, Twitter, and Trendogate; Documentation for the API can be found <a href="http://socialstocks.net/documentation.html">here</a>. The client interface uses our API to provide graphs for search queries from various sources. Our code is open source and our API is free to use, so feel free to develop your own interfaces and tools.</p>
         </div>
         
-        <div style="width:100%; height:350px; padding:30px; padding-left:20%; padding-right:20%; font-size: 20px; text-align:center; letter-spacing: 2px; background-color:#ececec">
-            <table style="width:100%; text-align:center;">
-                <tr>
-                    <td>
-                        <div style="margin-left:calc(50% - 100px); width:200px; height:200px; background-image:url(img/IMG_2767.jpg); background-size:100%;border-radius:100%; "></div>
-                    </td>
-                    <td>
-                        <div style="margin-left:calc(50% - 100px); width:200px; height:200px;background-image:url(img/headshot.jpeg); background-size:150% 100%; background-position:center;border-radius:100%;"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        David Thames
-                    </td>
-                    <td>
-                        Joshua Peterson
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="http://davidcthames.com/">http://davidcthames.com/</a>
-                    </td>
-                    <td>
-                        <a href="http://joshuajpeterson.com/">http://joshuajpeterson.com/</a>
-                    </td>
-                </tr>
-                
-            </table>
+        
+        
+        
+         <div class="container-fluid awards" style="background-image:url(img/VTHacksAwards.jpg); background-position:center; position:relative; min-height:600px; ">
+            <div style="position:absolute; top:0px; left:0px; width:100%; height:100%; background-color:rgba(240, 240, 255, .75);z-index:0;"></div>
+            
+            <div class="col-xs-12">
+                <h2>Recognition</h2>
+                <br><br>
+            </div>
+        
+            <div class="col-xs-2"></div>
+            <div class="col-xs-4">
+                <div class="panel">
+                    <div style="margin-left:calc(50% - 100px); width:200px; height:200px; background-image:url(img/microstrategy.png); background-size:100% "></div>
+                    <p>Microstrategy: MSTR Experience Award at VTHacks IV</p>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="panel">
+                    <div style="margin-left:calc(50% - 100px); width:200px; height:200px;background-image:url(img/github.png); background-size:100%;"></div>
+                    <p>GitHub Best Developer App Award at VTHacks IV</p>
+                </div>
+            </div>
+            <div class="col-xs-2"></div>
+            
         </div>
+        
+        
+        
+        
+        
+        <div class="container-fluid devs" style="min-height:350px;">
+                <div class="col-xs-6">
+                    <div style="margin-left:calc(50% - 100px); width:200px; height:200px; background-image:url(img/IMG_2767.jpg); background-size:100%;border-radius:100%; "></div>
+                    <p>David Thames</p>
+                    <a href="http://davidcthames.com/">http://davidcthames.com/</a>
+                </div>
+                <div class="col-xs-6">
+                    <div style="margin-left:calc(50% - 100px); width:200px; height:200px;background-image:url(img/headshot.jpeg); background-size:150% 100%; background-position:center;border-radius:100%;"></div>
+                    <p>Joshua Peterson</p>
+                    <a href="http://joshuajpeterson.com/">http://joshuajpeterson.com/</a>
+                </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+       
         
         
         
