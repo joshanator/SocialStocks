@@ -1,2 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters />
+<parameters>
+  <parameter name="databaseString-Web.config Connection String" description="databaseString Connection String used in web.config by the application to access the database." defaultValue="server=socialstocks.database.windows.net;database=SocialStocks;uid=petersonjoshua;password=31@F3r0.97;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Joshua\ Peterson\\Documents\\GitHub\\SocialStocks\\SocialStocksWebAPI\\SocialStocksWebAPI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='databaseString']/@connectionString" />
+  </parameter>
+</parameters>

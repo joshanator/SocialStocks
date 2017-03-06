@@ -19,7 +19,7 @@ namespace SocialStocksWebAPI.Controllers
 
             using (System.Net.WebClient web = new WebClient())
             {
-                string TDataUrl = "http://socialstocks.us-west-2.elasticbeanstalk.com/TwitterSearch/search3.php?q=" + Hashtag;
+                string TDataUrl = "http://socialstocks.net/TwitterSearch/search3.php?q=" + Hashtag;
                 string tData = web.DownloadString(TDataUrl);
                 Models.twitterTrending trendingData = Models.Twitter.Parse(tData, Hashtag);
                 twitterData = trendingData.tweetList;
@@ -54,6 +54,7 @@ namespace SocialStocksWebAPI.Controllers
             Models.Combined comboData = Models.combinedConstructor.Parse(twitterData, stockData, start, end);
             comboData.hashtag = Hashtag;
             comboData.symbol = symbol;
+
 
             return comboData.dataList;
         }
