@@ -24,20 +24,40 @@ if ($result['token_type'] !== "bearer") {
 $bearer_token = $result['access_token'];
 $opts = array(
   'http'=>array(
-    'method' => 'GET',
+    'method' => 'GET', 
     'header' => 'Authorization: Bearer '.$bearer_token
   )
 );
 //search query
 $context = stream_context_create($opts);
 
-$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=200&trim_user=true&exclude_replies=true&screen_name=' . $_GET['user'] ,false,$context);
+
+if(isset($_GET['number']))
+	$number = $_GET['number'];
+else
+	$number = 2000; 
+
+
+
+if($number < 200) 
+	$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=' . $number . '&trim_user=true&exclude_replies=true&screen_name=' . $_GET['user'] ,false,$context);
+else
+	$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=200&trim_user=true&exclude_replies=true&screen_name=' . $_GET['user'] ,false,$context);
+
 $tweets = json_decode($json,true);
 
-for($i = 0; $i < 10; $i++) {
-	$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=200&trim_user=true&exclude_replies=true&max_id=' . $tweets[count($tweets) - 1]['id_str'] . '&screen_name=' . $_GET['user'] ,false,$context);
+
+
+for($i = 1; $i * 200 < $number; $i++) {
+	if($number < 200) 
+		$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=' . $number . '&trim_user=true&exclude_replies=true&max_id=' . $tweets[count($tweets) - 1]['id_str'] . '&screen_name=' . $_GET['user'] ,false,$context);
+	else
+		$json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=200&trim_user=true&exclude_replies=true&max_id=' . $tweets[count($tweets) - 1]['id_str'] . '&screen_name=' . $_GET['user'] ,false,$context);
+
 	$temp = $tweets;
 	$tweets = array_merge($temp, json_decode($json,true));
+
+	$number = $number - 200;
 }
 
 
