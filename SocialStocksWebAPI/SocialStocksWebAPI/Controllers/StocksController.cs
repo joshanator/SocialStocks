@@ -138,7 +138,6 @@ namespace SocialStocksWebAPI.Controllers
                     + "&d=" + (endDate.Month - 1) + "&e=" + endDate.Day + "&f=" + endDate.Year
                     + "&g=" + interval
                     + "&ignore=.csv";
-
                 csvData = web.DownloadString(downloadString);
 
                 Models.StockListDetailed stocks = Models.YahooFinance.Parse(csvData, Symbol, startDate, endDate, interval);
