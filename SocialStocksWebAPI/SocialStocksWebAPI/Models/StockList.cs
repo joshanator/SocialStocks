@@ -34,7 +34,7 @@ namespace SocialStocksWebAPI.Models
             List<StockInfo> stockInfo = new List<StockInfo>();
 
             string[] rows = csvData.Replace("r", "").Replace("\"", "").Split('\n');
-            foreach (string row in rows)
+            foreach (string row in rows.Skip(1))
             {
                 if (string.IsNullOrEmpty(row)) continue;
                 string[] cols = row.Split(',');
