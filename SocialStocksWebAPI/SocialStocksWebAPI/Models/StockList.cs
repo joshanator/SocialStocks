@@ -66,7 +66,7 @@ namespace SocialStocksWebAPI.Models
             List<StockInfoDetailed> stockInfo = new List<StockInfoDetailed>();
 
             string[] rows = csvData.Replace("r", "").Replace("\"", "").Split('\n');
-            foreach (string row in rows)
+            foreach (string row in rows.Skip(1))
             {
                 if (string.IsNullOrEmpty(row)) continue;
                 string[] cols = row.Split(',');
@@ -78,7 +78,7 @@ namespace SocialStocksWebAPI.Models
                     s.High = Convert.ToDecimal(cols[2].Trim());
                     s.Low = Convert.ToDecimal(cols[3].Trim());
                     s.Close = Convert.ToDecimal(cols[4].Trim());
-                    s.AdjClose = Convert.ToDecimal(cols[6].Trim());
+                    s.Volume = Convert.ToDecimal(cols[5].Trim());
                     stockInfo.Add(s);
                 }
 

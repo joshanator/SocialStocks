@@ -64,11 +64,11 @@ namespace SocialStocksWebAPI.Models
             string csvData;
             using (System.Net.WebClient web = new WebClient())
             {
-                string downloadString = "http://chart.finance.yahoo.com/table.csv?s="
-                    + Symbol
-                    + "&a=" + (startDate.Month - 1) + "&b=" + startDate.Day + "&c=" + startDate.Year
-                    + "&d=" + (endDate.Month - 1) + "&e=" + endDate.Day + "&f=" + endDate.Year
-                    + "&g=d&ignore=.csv";
+                string downloadString = "https://stooq.com/q/d/l/?s="
+                    + Symbol + ".us&c=0"
+                    + "&d1=" + startDate.ToString("yyyyMMdd")
+                    + "&d2=" + endDate.ToString("yyyyMMdd")
+                    + "&i=d";
 
                 csvData = web.DownloadString(downloadString);
 
@@ -130,11 +130,11 @@ namespace SocialStocksWebAPI.Models
             string csvData;
             using (System.Net.WebClient web = new WebClient())
             {
-                string downloadString = "http://chart.finance.yahoo.com/table.csv?s="
-                    + Symbol
-                    + "&a=" + (startDate.Month - 1) + "&b=" + startDate.Day + "&c=" + startDate.Year
-                    + "&d=" + (endDate.Month - 1) + "&e=" + endDate.Day + "&f=" + endDate.Year
-                    + "&g=d&ignore=.csv";
+                string downloadString = "https://stooq.com/q/d/l/?s="
+                    + Symbol + ".us&c=0"
+                    + "&d1=" + startDate.ToString("yyyyMMdd")
+                    + "&d2=" + endDate.ToString("yyyyMMdd")
+                    + "&i=d";
 
                 csvData = web.DownloadString(downloadString);
 
@@ -197,11 +197,11 @@ namespace SocialStocksWebAPI.Models
             {
                 foreach (string Symbol in symbols)
                 {
-                    string downloadString = "http://chart.finance.yahoo.com/table.csv?s="
-                    + Symbol
-                    + "&a=" + (startDate.Month - 1) + "&b=" + startDate.Day + "&c=" + startDate.Year
-                    + "&d=" + (endDate.Month - 1) + "&e=" + endDate.Day + "&f=" + endDate.Year
-                    + "&g=d&ignore=.csv";
+                    string downloadString = "https://stooq.com/q/d/l/?s="
+                    + Symbol + ".us&c=0"
+                    + "&d1=" + startDate.ToString("yyyyMMdd")
+                    + "&d2=" + endDate.ToString("yyyyMMdd")
+                    + "&i=d";
 
                     csvData = web.DownloadString(downloadString);
 
