@@ -14,8 +14,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       
       <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/graphing.js"></script>
   <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
@@ -153,7 +155,7 @@
                           <form class="" action="index.php">
                               
                             <div class="form-group">
-                                <input type="text" name="symbol" placeholder="Stock Symbol" class="form-control">
+                                <input type="text" name="symbol" id="symbol" placeholder="Stock Symbol" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input type="text" name="start" placeholder="Start Date (YYYY-MM-DD)" class="form-control">
@@ -161,7 +163,7 @@
                             </div>
 
 
-                            <button type="button" onClick="formPost(this)" class="btn btn-success">Search</button>
+                            <button type="button" onClick="collect()" class="btn btn-success">Search</button>
                         </form>
                         
                         
@@ -190,7 +192,8 @@
             </div>
             <div class="panel-body">
                 
-                <iframe id="graph" width="1000" height="450" src=""></iframe>;
+                <!-- <iframe id="graph" width="1000" height="450" src=""></iframe>; -->
+                <div id="chart_div" width="1000" height="450"></div>
                 
                 
             </div>
@@ -208,52 +211,52 @@
 
     <script>
         
-        initialURL = window.location.href + "?";
-        if(window.location.href.indexOf('?') != -1)
-            initialURL = window.location.href.slice(0, window.location.href.indexOf('?')) + "?";
+        // initialURL = window.location.href + "?";
+        // if(window.location.href.indexOf('?') != -1)
+        //     initialURL = window.location.href.slice(0, window.location.href.indexOf('?')) + "?";
         
-        URL = initialURL;
-        
-        
-        function formPost(obj) {
-            resetURL();
-            console.log($(obj).parent("form").find("input"));
-            $.each($(obj).parent("form").find("input"), function(i, element) {
-                addURLParam($(element).prop('name'), $(element).prop('value'));
-            });
-            setURL();
-            update();
-        }
+        // URL = initialURL;
         
         
-        function resetURL() {
-            URL = initialURL;
-        }
+        // function formPost(obj) {
+        //     resetURL();
+        //     console.log($(obj).parent("form").find("input"));
+        //     $.each($(obj).parent("form").find("input"), function(i, element) {
+        //         addURLParam($(element).prop('name'), $(element).prop('value'));
+        //     });
+        //     setURL();
+        //     update();
+        // }
         
-        function addURLParam(key, value) {
-            URL += key + "=" + value + "&"; 
-        }
+        
+        // function resetURL() {
+        //     URL = initialURL;
+        // }
+        
+        // function addURLParam(key, value) {
+        //     URL += key + "=" + value + "&"; 
+        // }
         
        
         
         
         
-        function update() {
-            console.log('updating...');
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                console.log(this.responseText);
-                if (this.readyState == 4 && this.status == 200) {
-                    $('iframe#graph').attr('src', this.responseText);
-                }
-            };
-            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1);
-            console.log("getURL.php?" + hashes);
-            xhttp.open("GET", "getURL.php?" + hashes, true);
-            xhttp.send();
-        }
+        // function update() {
+        //     console.log('updating...');
+        //     var xhttp = new XMLHttpRequest();
+        //     xhttp.onreadystatechange = function() {
+        //         console.log(this.responseText);
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             $('iframe#graph').attr('src', this.responseText);
+        //         }
+        //     };
+        //     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1);
+        //     console.log("getURL.php?" + hashes);
+        //     xhttp.open("GET", "getURL.php?" + hashes, true);
+        //     xhttp.send();
+        // }
         
-        update()
+        // update()
     </script>
       
       
