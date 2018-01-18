@@ -45,10 +45,10 @@
 
                         <div id="collapseOne" class="collapse" role="tabpanel">
                             <div class="card-body">
-                                <form action="index.php">
+                                <form>
                                     <label for="symbol">Stock Symbol</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Symbol (EX: MSTR)" aria-label="Symbol">
+                                        <input type="text" class="form-control" id="search-symbol" placeholder="Symbol (EX: MSTR)" aria-label="Symbol">
                                     </div>
 
                                     <label for="comparison-tabs">Comparisons</label>
@@ -77,31 +77,31 @@
 
                                         <div class="tab-pane fade" id="comparison-user" role="tabpanel" aria-labelledby="comparison-user-tab">
 
-                                            <label for="symbol">User</label>
+                                            <label for="search-user">User</label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">@</span>
                                                 </div>
-                                                <input type="text" class="form-control" placeholder="Username" aria-label="Symbol">
+                                                <input type="text" class="form-control" placeholder="Username" aria-label="search-user">
                                             </div>
 
-                                            <label for="symbol">Keyword</label>
+                                            <label for="search-keyword">Keyword</label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">"</span>
                                                 </div>
-                                                <input type="text" class="form-control" placeholder="Word or Phrase" aria-label="Symbol">
+                                                <input type="text" class="form-control" placeholder="Word or Phrase" aria-label="search-keyword">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">"</span>
                                                 </div>
                                             </div>
 
-                                            <label for="symbol">Number of tweets to search through</label>
+                                            <label for="search-num-tweets">Number of tweets to search through</label>
                                             <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">Optional</span>
                                                     </div>
-                                                <input type="text" class="form-control" placeholder="Default: ##" aria-label="Symbol">
+                                                <input type="text" class="form-control"  placeholder="Default: ##" aria-label="search-num-tweets">
                                             </div>
 
                                         </div>
@@ -121,8 +121,8 @@
                                     </div>
 
                                     <br/>
-                                    <button class="btn btn-primary" onClick="formPost(this)">
-                                        Submit <i class="material-icons">arrow_forward</i>
+                                    <button type="button" class="btn btn-primary" onClick="collect()">
+                                        Search <i class="material-icons">arrow_forward</i>
                                     </button>
 
                                 </form>
@@ -240,9 +240,11 @@
         
         
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="script.js"></script>
+        <script src="graphing.js"></script>
     </body>
 </html>
