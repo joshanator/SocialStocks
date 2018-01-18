@@ -11,7 +11,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-light bg-light navbar-expand-lg navbar-fixed-top">
+        <nav class="navbar navbar-dark bg-primary navbar-expand-lg navbar-fixed-top">
             <a class="navbar-brand" href="#">Social Stocks</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,9 +44,90 @@
                         </a>
 
                         <div id="collapseOne" class="collapse" role="tabpanel">
-                        <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
+                            <div class="card-body">
+                                <form action="index.php">
+                                    <label for="symbol">Stock Symbol</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Symbol (EX: MSTR)" aria-label="Symbol">
+                                    </div>
+
+                                    <label for="comparison-tabs">Comparisons</label>
+                                    <ul class="nav nav-pills mb-3" id="comparison-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="comparison-none-tab" data-toggle="pill" href="#comparison-none" role="tab" aria-controls="pills-home" aria-selected="true">
+                                                None
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="comparison-user-tab" data-toggle="pill" href="#comparison-user" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                                User
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="comparison-trends-tab" data-toggle="pill" href="#comparison-trends" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                                Trends
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="comparison-tabs-content">
+
+                                        <div class="tab-pane fade show active" id="comparison-none" role="tabpanel" aria-labelledby="comparison-none-tab">
+                                            Select a tab above to choose comparison options
+                                        </div>
+
+                                        <div class="tab-pane fade" id="comparison-user" role="tabpanel" aria-labelledby="comparison-user-tab">
+
+                                            <label for="symbol">User</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">@</span>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Username" aria-label="Symbol">
+                                            </div>
+
+                                            <label for="symbol">Keyword</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">"</span>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Word or Phrase" aria-label="Symbol">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">"</span>
+                                                </div>
+                                            </div>
+
+                                            <label for="symbol">Number of tweets to search through</label>
+                                            <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Optional</span>
+                                                    </div>
+                                                <input type="text" class="form-control" placeholder="Default: ##" aria-label="Symbol">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="tab-pane fade" id="comparison-trends" role="tabpanel" aria-labelledby="comparison-trends-tab">
+
+                                            <label for="symbol">Hashtag</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">#</span>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Word" aria-label="Symbol">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <br/>
+                                    <button class="btn btn-primary" onClick="formPost(this)">
+                                        Submit <i class="material-icons">arrow_forward</i>
+                                    </button>
+
+                                </form>
+                                        
+                            </div>
                         </div>
                     </div>
                 </div>
