@@ -1,0 +1,64 @@
+
+body {
+    font-family: 'Roboto' , sans-serif !important;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+a.no-link {
+    color: black;
+}
+a.no-link:hover {
+    color: black;
+    text-decoration: none;
+}
+
+a.toggle-link {
+    color: #9E9E9E;
+}
+a.toggle-link:hover {
+    color: black;
+}
+
+span.right {
+    float:right;
+}
+
+.container#main-container {
+    padding-top: 50px;
+}
+
+#suggestions > h4 {
+    margin-bottom: 25px;
+}
+#suggestions > .card {
+    width: 40rem;
+    max-width: calc(100% - 80px);
+    min-height: 200px;
+    margin: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
+    transition: box-shadow .3s;
+}
+#suggestions > .card  .card-header {
+    border-bottom: none;
+    background-color: #FFFFFF;
+    font-weight:bold;
+}
+#suggestions > .card .card-body {
+    font-weight: 300;
+    color: #757575;
+}
+#suggestions > .card:hover {
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,.19), 0 6px 3px 0 rgba(0,0,0,.23);
+}
+
+.rating {
+    margin-left: 10px;
+    height:100%;
+}
