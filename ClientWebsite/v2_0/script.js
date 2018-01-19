@@ -1,12 +1,18 @@
-function collect(){
-    var stock = $("#search-symbol")[0].value;
+function search() {
+    if(!$('.card#search').hasClass('full-width')) {
+        searchPage();
+    }
+    collect();
+}
 
-    var url = 'http://socialstockswebapi.azurewebsites.net/api/Stocks?symbol=' + stock;
+function searchPage() {
+    $('.card#search').addClass('full-width')
+    $('.main-page').css('display', 'none');
+    $('.search-page').attr('style', 'display: block !important');
+}
 
-    var json = $.getJSON(url, function(data) {
-        console.log(data);
-
-        draw(data);
-
-    });
+function mainPage() {
+    $('.card#search').removeClass('full-width')
+    $('.main-page').css('display', 'block');
+    $('.search-page').attr('style', '');
 }

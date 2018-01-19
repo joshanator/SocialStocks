@@ -7,10 +7,10 @@ function draw(json) {
     data.addColumn('number', "Y");
 
 
-for(i=0;i<json.length;i++){
-    var date = new Date(json[i].date.substr(0,10));
-    data.addRow([date, json[i].price]);
-}
+    for(i=0;i<json.length;i++){
+        var date = new Date(json[i].date.substr(0,10));
+        data.addRow([date, json[i].price]);
+    }
 
 
     var options = {
