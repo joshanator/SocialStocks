@@ -26,20 +26,24 @@ namespace SocialStocksWebAPI.Models
             Combined combo = new Combined();
 
             List<combinedPoint> comboList = new List<combinedPoint>();
-            int i = stockData.Count - 1;
+            int i = 0;
 
-            while(start <= end && i >= 0)
+            while(start <= end && i<stockData.Count)
             {
                 combinedPoint s = new combinedPoint();
                 s.date = start;
-                if(stockData[i].date == start)
+                if(start < stockData[0].date)
+                {
+                    s.stockPrice = stockData[0].price;
+                }
+                else if(stockData[i].date == start)
                 {
                     s.stockPrice = stockData[i].price;
-                    i--;
+                    i++;
                 }
-                else if(i<stockData.Count-1)
+                else if(i>0)
                 {
-                    s.stockPrice = stockData[i + 1].price;
+                    s.stockPrice = stockData[i - 1].price;
                 }
 
                 foreach(Models.tweets t in twitterData)
