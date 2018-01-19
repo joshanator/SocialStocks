@@ -25,7 +25,7 @@ function draw(json) {
     }
     };
 
-    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.LineChart($('#search-results')[0]);
     chart.draw(data, options);
 }
 
