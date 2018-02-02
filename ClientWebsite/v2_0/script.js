@@ -2,7 +2,16 @@ function search() {
     if(!$('.card#search').hasClass('full-width')) {
         searchPage();
     }
-    collect();
+    if($("#comparison-user")[0].className == "tab-pane fade active show"){
+        collectUser();
+    }
+    else if($("#comparison-trends")[0].className == "tab-pane fade active show"){
+        collectTrends();
+    }
+    else{
+        collectStock();
+    }
+    
 }
 
 function searchPage() {
