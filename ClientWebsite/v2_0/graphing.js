@@ -99,15 +99,13 @@ function drawTrends(json) {
 
 
 
-function collectStock(){
-    var stock = $("#search-symbol")[0].value;
-
-    var query = "?" + "symbol=" + stock;
+function collectStock(stock){
+    var query = "symbol=" + stock;
 
     var stateObj = {symbol: stock};
-    history.pushState(stateObj, "Symbol: " + stock, query);
+    history.pushState(stateObj, "Symbol: " + stock, "?stock&" + query);
 
-    var url = 'http://socialstockswebapi.azurewebsites.net/api/Stocks' + query;
+    var url = 'http://socialstockswebapi.azurewebsites.net/api/Stocks?' + query;
 
     var json = $.getJSON(url, function(data) {
         console.log(data);
@@ -116,22 +114,17 @@ function collectStock(){
 }
 
 
-function collectUser(){
-    var stock = $("#search-symbol")[0].value;
-    var user = $("#searchUser")[0].value;
-    var keyword = $("#searchKeyword")[0].value;
-    var number = $("#searchNumberOfTweets")[0].value;
-
-    var query = "?" + "symbol=" + stock + "&user=" + user + "&keyword=" + keyword;
+function collectUser(stock,user,keyword,number){
+    var query = "symbol=" + stock + "&user=" + user + "&keyword=" + keyword;
 
     if(number != ""){
         query += "&number=" + number;
     }
 
     var stateObj = {symbol: stock, user:user, keyword:keyword, number:number};
-    history.pushState(stateObj, "Symbol: " + stock, query);
+    history.pushState(stateObj, "Symbol: " + stock, "?user&" +query);
 
-    var url = 'http://socialstockswebapi.azurewebsites.net/api/User' + query;
+    var url = 'http://socialstockswebapi.azurewebsites.net/api/User?' + query;
 
     var json = $.getJSON(url, function(data) {
         console.log(data);
@@ -140,16 +133,13 @@ function collectUser(){
 }
 
 
-function collectTrends(){
-    var stock = $("#search-symbol")[0].value;
-    var hashtag = $("#searchHashtag")[0].value;
-
-    var query = "?" + "symbol=" + stock + "&hashtag=" + hashtag;
+function collectTrends(stock,hashtag){
+    var query = "symbol=" + stock + "&hashtag=" + hashtag;
 
     var stateObj = {symbol: stock, hashtag:hashtag};
-    history.pushState(stateObj, "Symbol: " + stock, query);
+    history.pushState(stateObj, "Symbol: " + stock, "?trends&" + query);
 
-    var url = 'http://socialstockswebapi.azurewebsites.net/api/Combined' + query;
+    var url = 'http://socialstockswebapi.azurewebsites.net/api/Combined?' + query;
 
     var json = $.getJSON(url, function(data) {
         console.log(data);
