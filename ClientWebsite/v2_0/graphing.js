@@ -16,6 +16,7 @@ function drawStocks(json) {
 
 
       var options = {
+        legend: {position: 'none'},
         hAxis: {
           title: 'Date'
         },
@@ -48,6 +49,7 @@ function drawUser(json) {
 
 
     var options = {
+        legend: {position: 'none'},
       series: {
           0: {axis: 'Stock'},
           1: {axis: 'Frequency'}
@@ -81,6 +83,7 @@ function drawTrends(json) {
 
 
       var options = {
+        legend: {position: 'none'},
         series: {
             0: {axis: 'Stock'},
             1: {axis: 'Trending'}
