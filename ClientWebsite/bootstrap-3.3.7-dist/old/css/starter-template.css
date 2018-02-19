@@ -1,0 +1,27 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+nav {
+    background-color:#3F51B5;
+}
+nav a {
+    color:white;
+}
+
+nav a:hover {
+    color:#999999;
+}
+
+.panel-primary {
+    border-color:#3F51B5;
+    /*max-width: 600px;*/
+}
+
+.panel-primary>.panel-heading {
+    background-color:#3F51B5;
+}
+

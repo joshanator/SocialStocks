@@ -1,6 +1,38 @@
 google.charts.load('current', {packages: ['corechart', 'line']});
 // google.charts.setOnLoadCallback(drawCurveTypes);
 
+function drawStocks(json) {
+    
+    
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'X');
+      data.addColumn('number', 'Stock Price');
+
+
+    for(i=0;i<json.length;i++){
+        var date = new Date(json[i].date.substr(0,10));
+        data.addRow([date, json[i].price]);
+    }
+
+
+      var options = {
+        legend: {position: 'none'},
+        hAxis: {
+          title: 'Date'
+        },
+        vAxis: {
+          title: 'Value'
+        },
+        series: {
+          1: {curveType: 'function'}
+        }
+      };
+
+      var chart = new google.visualization.LineChart($('#search-results')[0]);
+      chart.draw(data, options);
+    }
+
+
 function drawUser(json) {
     
     
@@ -17,6 +49,7 @@ function drawUser(json) {
 
 
     var options = {
+        legend: {position: 'none'},
       series: {
           0: {axis: 'Stock'},
           1: {axis: 'Frequency'}
@@ -29,9 +62,9 @@ function drawUser(json) {
         }
     };
 
-    var chart = new google.charts.Line(document.getElementById('chart_div'));
+    var chart = new google.charts.Line($('#search-results')[0]);
     chart.draw(data, options);
-  }
+}
 
 
 function drawTrends(json) {
@@ -50,6 +83,7 @@ function drawTrends(json) {
 
 
       var options = {
+        legend: {position: 'none'},
         series: {
             0: {axis: 'Stock'},
             1: {axis: 'Trending'}
@@ -62,99 +96,56 @@ function drawTrends(json) {
           }
       };
 
-      var chart = new google.charts.Line(document.getElementById('chart_div'));
-      chart.draw(data, options);
-    }
-
-    
-
-
-
-
-function drawStocks(json) {
-    
-    
-      var data = new google.visualization.DataTable();
-      data.addColumn('date', 'X');
-      data.addColumn('number', 'Stock Price');
-
-
-    for(i=0;i<json.length;i++){
-        var date = new Date(json[i].date.substr(0,10));
-        data.addRow([date, json[i].price]);
-    }
-
-
-      var options = {
-        hAxis: {
-          title: 'Date'
-        },
-        vAxis: {
-          title: 'Value'
-        },
-        series: {
-          1: {curveType: 'function'}
-        }
-      };
-
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      var chart = new google.charts.Line($('#search-results')[0]);
       chart.draw(data, options);
     }
 
 
-    function collectUser(){
-        var stock = $("#symbol1")[0].value;
-        var user = $("#user")[0].value;
-        var keyword = $("#keyword")[0].value;
-        var number = $("#number")[0].value;
 
-        var url = 'http://socialstockswebapi.azurewebsites.net/api/User?symbol=' + stock + "&user=" + user + "&keyword=" + keyword;
+function collectStock(stock){
+    var query = "symbol=" + stock;
 
-        if(number != ""){
-            url += "&number=" + number;
-        }
+    var stateObj = {symbol: stock};
+    history.pushState(stateObj, "Symbol: " + stock, "?stock&" + query);
 
-        var json = $.getJSON(url, function(data) {
-            console.log(data);
-    
-            drawUser(data);
-    
-        });
+    var url = 'http://socialstockswebapi.azurewebsites.net/api/Stocks?' + query;
+
+    var json = $.getJSON(url, function(data) {
+        console.log(data);
+        drawStocks(data);
+    });
+}
+
+
+function collectUser(stock,user,keyword,number){
+    var query = "symbol=" + stock + "&user=" + user + "&keyword=" + keyword;
+
+    if(number != ""){
+        query += "&number=" + number;
     }
 
-    function collectTrends(){
-        var stock = $("#symbol2")[0].value;
-        var hashtag = $("#hashtag")[0].value;
+    var stateObj = {symbol: stock, user:user, keyword:keyword, number:number};
+    history.pushState(stateObj, "Symbol: " + stock, "?user&" +query);
 
-        var url = 'http://socialstockswebapi.azurewebsites.net/api/Combined?hashtag=' + hashtag + "&symbol=" + stock;
+    var url = 'http://socialstockswebapi.azurewebsites.net/api/User?' + query;
 
-        var json = $.getJSON(url, function(data) {
-            console.log(data);
-    
-            drawTrends(data);
-    
-        });
-    }
-
-    function collectStocks(){
-        var stock = $("#symbol3")[0].value;
-        var start = $("#startDate")[0].value;
-        var end = $("#endDate")[0].value;
-
-        var url = 'http://socialstockswebapi.azurewebsites.net/api/Stocks?symbol=' + stock;
-
-        if(start != ""){
-            url+= "&start=" + start;
-        }
-        if(end != ""){
-            url+= "&end=" + end;
-        }
+    var json = $.getJSON(url, function(data) {
+        console.log(data);
+        drawUser(data);
+    });
+}
 
 
-        var json = $.getJSON(url, function(data) {
-            console.log(data);
-    
-            drawStocks(data);
-    
-        });
-    }
+function collectTrends(stock,hashtag){
+    var query = "symbol=" + stock + "&hashtag=" + hashtag;
+
+    var stateObj = {symbol: stock, hashtag:hashtag};
+    history.pushState(stateObj, "Symbol: " + stock, "?trends&" + query);
+
+    var url = 'http://socialstockswebapi.azurewebsites.net/api/Combined?' + query;
+
+    var json = $.getJSON(url, function(data) {
+        console.log(data);
+        drawTrends(data);
+    });
+}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Social Stocks</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      
+      <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/graphing.js"></script>
+  <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <nav class="navbar navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Social Stocks</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="documentation.html">API Documentation</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+          
+          <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Search</h3>
+          </div>
+          <div class="panel-body">
+              
+              
+              <ul class="nav nav-tabs">
+<!--                    <li class="active"><a data-toggle="tab" href="#home">Recentc</a></li>-->
+                    <li class="active"><a data-toggle="tab" href="#menu1">User</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Trends</a></li>
+                  <li><a data-toggle="tab" href="#menu3">Stock</a></li>
+                  <!-- <li><a data-toggle="tab" href="#menu4">Suggested</a></li> -->
+              </ul>
+              
+
+                <div class="tab-content">
+                    
+<!--
+                    <div id="home" class="tab-pane fade in active">
+                      <h3>Search Recent(6-9 Day old) Data</h3>
+                      <p>
+                        <form class="" action="index.php">
+
+                            <div class="form-group">
+                                <input type="text" name="symbol" placeholder="Stock Symbol" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="type" placeholder="Recent(limited to last 100 posts) or Popular" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="q" placeholder="Search Query (https://dev.twitter.com/rest/public/search)" class="form-control">
+                            </div>
+
+                            <button type="submit" class="btn btn-success">Search</button>
+                        </form>
+
+                        
+                        
+                        </p>
+                    </div>
+-->
+              
+                    <div id="menu1" class="tab-pane fade in active">
+                      <h3>Search Data From a Specific User</h3>
+                      <p>
+                          
+                          <form class="">
+
+                            <div class="form-group">
+                                <input type="text" name="symbol" id="symbol1" placeholder="Stock Symbol" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="user" id="user" placeholder="User" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="keyword" id="keyword" placeholder="Keyword" class="form-control">
+                            </div>
+                              
+                              <div class="for-group">
+                                <input type="text" name="number" id="number" placeholder="Number of tweets to search through" class="form-control">
+                              </div>
+
+                            <button type="button" onClick="collectUser()" class="btn btn-success">Search</button>
+                        </form>
+                        
+                        </p>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                      <h3>Search From Historical(2006 - Present) Trending Hashtags</h3>
+                      <p>
+                          
+                          <form class="">
+                              
+                            <div class="form-group">
+                                <input type="text" name="symbol" id="symbol2" placeholder="Stock Symbol" class="form-control">
+                            </div>
+
+
+                            <div class="form-group">
+                                <input type="text" name="hashtag" id="hashtag" placeholder="Hashtag" class="form-control">
+                            </div>
+
+                            <button type="button" onClick="collectTrends()" class="btn btn-success">Search</button>
+                        </form>
+                        
+                        
+                        </p>
+                    </div>
+                    <div id="menu3" class="tab-pane fade">
+                      <h3>Search Stock Data</h3>
+                      <p>
+                          
+                          <form class="" action="index.php">
+                              
+                            <div class="form-group">
+                                <input type="text" name="symbol" id="symbol3" placeholder="Stock Symbol" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="start" id="startDate" placeholder="Start Date (YYYY-MM-DD)" class="form-control">
+                                <input type="text" name="end" id="endDate" placeholder="End Date (YYYY-MM-DD)" class="form-control">
+                            </div>
+
+
+                            <button type="button" onClick="collectStocks()" class="btn btn-success">Search</button>
+                        </form>
+                        
+                        
+                        </p>
+                    </div>
+        
+                    <!-- <div id="menu4" class="tab-pane fade">
+                      <h3>Suggested</h3>
+                      <p>
+                          <a href="/?symbol=TWX&user=realDonaldTrump&keyword=media"><button class="btn btn-default btn-lg">User: Time Warner Stock vs. Trump Tweeting "media"</button></a>
+                        <a href="/?symbol=KRX&hashtag=note7&"><button class="btn btn-default btn-lg">Trends: Samsung stock vs. #note7 Trending</button></a>
+
+                          <a href="/?symbol=MSTR&start=2016-02-19&end=2017-02-19"><button class="btn btn-default btn-lg">Stock: MSTR</button></a>
+                        </p>
+                    </div>     -->
+                </div>
+              
+              
+          </div>
+        </div>
+          
+          
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Results</h3>
+            </div>
+            <div class="panel-body">
+                
+                <!-- <iframe id="graph" width="1000" height="450" src=""></iframe>; -->
+                <div id="chart_div" width="1000" height="600"></div>
+                
+                
+            </div>
+        </div>
+              
+          
+      </div>
+
+    </div><!-- /.container -->
+      
+
+
+
+
+
+    <script>
+        
+        // initialURL = window.location.href + "?";
+        // if(window.location.href.indexOf('?') != -1)
+        //     initialURL = window.location.href.slice(0, window.location.href.indexOf('?')) + "?";
+        
+        // URL = initialURL;
+        
+        
+        // function formPost(obj) {
+        //     resetURL();
+        //     console.log($(obj).parent("form").find("input"));
+        //     $.each($(obj).parent("form").find("input"), function(i, element) {
+        //         addURLParam($(element).prop('name'), $(element).prop('value'));
+        //     });
+        //     setURL();
+        //     update();
+        // }
+        
+        
+        // function resetURL() {
+        //     URL = initialURL;
+        // }
+        
+        // function addURLParam(key, value) {
+        //     URL += key + "=" + value + "&"; 
+        // }
+        
+       
+        
+        
+        
+        // function update() {
+        //     console.log('updating...');
+        //     var xhttp = new XMLHttpRequest();
+        //     xhttp.onreadystatechange = function() {
+        //         console.log(this.responseText);
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             $('iframe#graph').attr('src', this.responseText);
+        //         }
+        //     };
+        //     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1);
+        //     console.log("getURL.php?" + hashes);
+        //     xhttp.open("GET", "getURL.php?" + hashes, true);
+        //     xhttp.send();
+        // }
+        
+        // update()
+    </script>
+      
+      
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  </body>
+</html>
