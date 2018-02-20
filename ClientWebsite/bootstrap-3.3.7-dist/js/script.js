@@ -12,6 +12,8 @@ function checkForQuery(){
 }
 
 function handleQuery(queryString){
+    addLoadingSymbol();
+
     var parameters = queryString.split("&");
     var stock = parameters[1].substr(7);
 
@@ -31,6 +33,11 @@ function handleQuery(queryString){
     else if(parameters[0] == "stock"){
         collectStock(stock);
     }
+}
+
+
+function addLoadingSymbol(){
+    $('#search-results')[0].innerHTML = "<img src= 'img/Preloader_3.gif' class='loadingSymbol'>";
 }
 
 

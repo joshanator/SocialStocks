@@ -96,3 +96,8 @@ i {
 .search-page {
     display: none !important;
 }
+
+
+#search-results{
+    text-align: center;
+}
